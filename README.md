@@ -20,6 +20,9 @@
 * Запуск job’ов в Docker container
 * Использование GitHub Environments и Secrets
 * E2E-проверки: запуск сервера в CI и ожидание readiness перед тестами
+* Аутентификация и публикация образа в Yandex Container Registry (YCR)
+* Автоматический деплой на удалённый сервер по SSH
+* Обновление сервисов через Docker Compose (docker compose pull и docker compose up -d).
 
 ---
 
@@ -45,6 +48,16 @@
 * Демонстрация зависимости job’ов через `needs`
 * Передача артефактов между этапами
 * Контроль последовательности выполнения CI/CD
+
+---
+## ya_deploy.yaml
+
+Workflow реализует end-to-end CI/CD:
+- запуск тестов;
+- сборка Docker-образа и публикация в Yandex Container Registry;
+- деплой на удалённый сервер по SSH с обновлением сервисов через Docker Compose.
+
+Все секреты (OAuth, SSH-ключи) хранятся в GitHub Secrets и не выводятся в логи.
 
 ---
 
